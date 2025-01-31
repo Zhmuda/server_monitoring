@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incidents</title>
+    <script>
+        function refreshIncidents() {
+            fetch('/monitor/incidents/')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('incident-list').innerHTML = data;
+                });
+        }
+        setInterval(refreshIncidents, 5000);
+    </script>
+</head>
+<body>
+    <h1>Incidents</h1>
+    <div id="incident-list">
+        {% include 'monitor/incident_list_partial.html' %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<ul>
+    {% for incident in incidents %}
+        <li>{{ incident.timestamp }} - {{ incident.server.name }}: {{ incident.message }}</li>
+    {% endfor %}
+</ul>
