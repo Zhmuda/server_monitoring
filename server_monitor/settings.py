@@ -25,10 +25,7 @@ SECRET_KEY = 'django-insecure-wp)3w069qfmy8a#7(nn0fl=)kurc^52r8apk=0&_%4&e@jd!$v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
-# Application definition
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'monitor',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'monitor.middleware.SimpleAuthMiddleware',
+    'monitor.middleware.SimpleAuthMiddleware',
 ]
 
 ROOT_URLCONF = 'server_monitor.urls'
@@ -55,7 +54,7 @@ ROOT_URLCONF = 'server_monitor.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,6 +83,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -126,6 +126,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+INSTALLED_APPS += ['django_cron']
 
 CRONJOBS = [
     ('*/15 * * * *', 'monitor.tasks.fetch_resource_data'),
