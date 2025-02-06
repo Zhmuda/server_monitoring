@@ -44,8 +44,12 @@
 3. Если вы не используете Docker, установите зависимости с помощью команды:
     ```bash
    pip install -r requirements.txt
+
+4. После запуска контейнеров выполните миграции:
+   ```bash
+   docker-compose exec web python manage.py migrate
    
-4. Приложение будет доступно по адресу: http://localhost:8000.
+5. Приложение будет доступно по адресу: http://localhost:8000.
 
 ## Использование
 
