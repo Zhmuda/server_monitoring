@@ -2,3 +2,4 @@ Django==5.0
 mysqlclient==2.2.0
 requests==2.31.0
 django-crontab==0.7.1
+django-cron
